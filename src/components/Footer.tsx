@@ -1,20 +1,15 @@
-import "./Footer.css";
-
-export default function Footer() {
+const Footer = () => {
   return (
-    <footer className="footer">
-      <div className="footer-logo">
-        Rowdy<span className="cyan">CyberCon</span>{" "}
-        <span className="dim">Fall 2026</span>
+    <footer className="bg-bg2 border-t border-border py-12 px-8 flex flex-col md:flex-row justify-between items-center flex-wrap gap-6 relative z-10 md:text-left text-center">
+      <div className="font-display font-bold text-[1.2rem] text-orange">
+        Rowdy<span className="text-cyan">CyberCon</span>{" "}
       </div>
-      <div className="footer-links">
-        <a href="#about">About</a>
-        <a href="#sponsor">Sponsor</a>
-        <a href="mailto:sponsor@rowdycybercon.com">Contact</a>
-      </div>
-      <div className="footer-meta">
-        © 2026 Rowdy CyberCon · UTSA · San Antonio, TX
+
+      <div className="font-mono text-[0.7rem] text-text-dim tracking-[0.1em]">
+        © {new Date().getFullYear()} Rowdy CyberCon · UTSA · San Antonio, TX
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;

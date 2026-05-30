@@ -1,7 +1,5 @@
-import { useReveal } from "../hooks/useReveal";
-import "./Stats.css";
+import { useReveal } from "@/hooks/useReveal";
 
-// ── Edit these to update your numbers ──────────────────────────
 const STATS = [
   { num: "250+", label: "Attendees", color: "" },
   { num: "9", label: "Sponsors", color: "cyan" },
@@ -12,14 +10,14 @@ const STATS = [
   { num: "25", label: "Volunteers", color: "cyan" },
 ];
 
-export default function Stats() {
+const Stats = () => {
   const labelRef = useReveal();
   const titleRef = useReveal();
   const descRef = useReveal();
   const gridRef = useReveal();
 
   return (
-    <section id="stats" className="stats-section">
+    <section id="stats" className="bg-surface relative z-10">
       <div className="section-inner">
         <div className="section-label" ref={labelRef}>
           Spring 2026 Impact Metrics
@@ -31,15 +29,35 @@ export default function Stats() {
           Rowdy CyberCon brings together the best cybersecurity minds in South
           Texas. Here's what we've built — and where we're going.
         </p>
-        <div className="stats-grid reveal" ref={gridRef}>
+        <div
+          className="reveal flex flex-wrap border border-border bg-border gap-px mt-12"
+          ref={gridRef}
+        >
           {STATS.map((s) => (
-            <div className="stat-card" key={s.label}>
-              <div className={`stat-num ${s.color}`}>{s.num}</div>
-              <div className="stat-label">{s.label}</div>
+            <div
+              className="bg-surface2 p-8 px-6 text-center transition-colors duration-200 hover:bg-[#1c2535] flex-1 basis-[180px]"
+              key={s.label}
+            >
+              <div
+                className={`font-display font-black text-[clamp(2.5rem,5vw,4rem)] leading-none ${
+                  s.color === "cyan"
+                    ? "text-cyan"
+                    : s.color === "green"
+                    ? "text-green"
+                    : "text-orange"
+                }`}
+              >
+                {s.num}
+              </div>
+              <div className="font-mono text-[0.75rem] tracking-[0.15em] uppercase text-text-dim mt-2">
+                {s.label}
+              </div>
             </div>
           ))}
         </div>
       </div>
     </section>
   );
-}
+};
+
+export default Stats;

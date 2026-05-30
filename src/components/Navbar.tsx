@@ -1,82 +1,102 @@
 import { useState } from "react";
-import "./Navbar.css";
 
-export default function Navbar() {
+const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const menuItems = [
+    {
+      name: "About",
+      url: "#about",
+    },
+    {
+      name: "Highlights",
+      url: "#highlights",
+    },
+    {
+      name: "Tracks",
+      url: "#tracks",
+    },
+    {
+      name: "Sponsor Us",
+      url: "#sponsor",
+    },
+    // {
+    //   name: "Team",
+    //   url: "#team",
+    // },
+  ];
 
   return (
     <>
-      <nav className="navbar">
-        <a className="nav-logo" href="#hero">
-          Rowdy<span>CyberCon</span>
-        </a>
-        <ul className="nav-links">
-          <li>
-            <a href="#about">About</a>
-          </li>
-          <li>
-            <a href="#highlights">Highlights</a>
-          </li>
-          <li>
-            <a href="#tracks">Tracks</a>
-          </li>
-          <li>
-            <a href="#sponsor">Sponsor Us</a>
-          </li>
-          <li>
-            <a href="#team">Team</a>
-          </li>
-        </ul>
+      <nav className="fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-10 py-4 border-b border-border backdrop-blur-xl bg-bg/85">
         <a
-          className="nav-cta"
+          className="font-display font-bold text-[1.2rem] text-orange tracking-[0.08em] no-underline"
+          href="#hero"
+        >
+          Rowdy<span className="text-cyan">CyberCon</span>
+        </a>
+        <ul className="hidden md:flex gap-8 list-none">
+          {menuItems.map((item) => (
+            <li>
+              <a
+                href={item.url}
+                className="font-mono text-[0.75rem] tracking-[0.12em] text-text-dim no-underline uppercase transition-colors duration-200 hover:text-cyan"
+              >
+                {item.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+        {/* <a
+          className="hidden md:inline-block font-mono text-[0.75rem] tracking-[0.12em] uppercase py-[0.45rem] px-[1.1rem] border border-orange text-orange bg-transparent cursor-pointer no-underline transition-all duration-200 hover:bg-orange hover:text-white"
           href="https://www.rowdycybercon.org/"
           target="_blank"
           rel="noreferrer"
         >
           Register
-        </a>
-        <div className="hamburger" onClick={() => setMenuOpen((prev) => !prev)}>
-          <span />
-          <span />
-          <span />
+        </a> */}
+        <div
+          className="flex md:hidden flex-col gap-[5px] cursor-pointer"
+          onClick={() => setMenuOpen((prev) => !prev)}
+        >
+          <span className="w-6 h-0.5 bg-text block" />
+          <span className="w-6 h-0.5 bg-text block" />
+          <span className="w-6 h-0.5 bg-text block" />
         </div>
       </nav>
 
       {menuOpen && (
-        <div className="mobile-nav open" onClick={() => setMenuOpen(false)}>
+        <div
+          className="fixed inset-0 z-[99] text-xl bg-bg/[0.97] flex flex-col items-center justify-center gap-2"
+          onClick={() => setMenuOpen(false)}
+        >
           <div
             onClick={(e) => e.stopPropagation()}
             style={{ display: "contents" }}
           >
-            <button className="mobile-close" onClick={() => setMenuOpen(false)}>
-              ✕
-            </button>
-            <a href="#about" onClick={() => setMenuOpen(false)}>
-              About
-            </a>
-            <a href="#highlights" onClick={() => setMenuOpen(false)}>
-              Highlights
-            </a>
-            <a href="#tracks" onClick={() => setMenuOpen(false)}>
-              Tracks
-            </a>
-            <a href="#sponsor" onClick={() => setMenuOpen(false)}>
-              Sponsor
-            </a>
-            <a href="#team" onClick={() => setMenuOpen(false)}>
-              Team
-            </a>
-            <a
+            {menuItems.map((item) => (
+              <a
+                href={item.url}
+                onClick={() => setMenuOpen(false)}
+                className="font-display font-bold  text-text no-underline hover:text-orange transition-colors duration-200"
+              >
+                {item.name}
+              </a>
+            ))}
+
+            {/* <a
               href="https://www.rowdycybercon.org/"
               target="_blank"
               rel="noreferrer"
               onClick={() => setMenuOpen(false)}
+              className="font-mono text-[0.75rem] tracking-[0.12em] uppercase py-[0.45rem] px-[1.1rem] border border-orange text-orange bg-transparent cursor-pointer no-underline transition-all duration-200 hover:bg-orange hover:text-white"
             >
               Register
-            </a>
+            </a> */}
           </div>
         </div>
       )}
     </>
   );
-}
+};
+
+export default Navbar;

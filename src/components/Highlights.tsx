@@ -1,7 +1,5 @@
-import { useReveal } from "../hooks/useReveal";
-import "./Highlights.css";
+import { useReveal } from "@/hooks/useReveal";
 
-// ── Edit highlight cards here ───────────────────────────────────
 const CARDS = [
   {
     icon: "🏆",
@@ -31,13 +29,13 @@ const CARDS = [
   },
 ];
 
-export default function Highlights() {
+const Highlights = () => {
   const labelRef = useReveal();
   const titleRef = useReveal();
   const gridRef = useReveal();
 
   return (
-    <section id="highlights" className="highlights-section">
+    <section id="highlights" className="bg-surface relative z-10">
       <div className="section-inner">
         <div className="section-label reveal" ref={labelRef}>
           Previous Year Highlights
@@ -45,16 +43,28 @@ export default function Highlights() {
         <h2 className="section-title reveal" ref={titleRef}>
           What to Expect
         </h2>
-        <div className="highlights-grid reveal" ref={gridRef}>
+        <div
+          className="reveal grid grid-cols-1 md:grid-cols-3 gap-4 mt-12"
+          ref={gridRef}
+        >
           {CARDS.map((c) => (
-            <div className={`hl-card ${c.wide ? "wide" : ""}`} key={c.title}>
-              <div className="hl-icon">{c.icon}</div>
-              <div className="hl-card-title">{c.title}</div>
-              <div className="hl-card-body">{c.body}</div>
+            <div
+              className={`bg-surface2 border border-border p-8 relative overflow-hidden transition-all duration-200 hover:border-cyan-dim hover:-translate-y-1 after:content-[''] after:absolute after:top-0 after:left-0 after:w-[3px] after:h-full after:bg-cyan after:opacity-0 after:transition-opacity after:duration-250 hover:after:opacity-100 ${
+                c.wide ? "md:col-span-2" : ""
+              }`}
+              key={c.title}
+            >
+              <div className="text-[1.8rem] mb-4">{c.icon}</div>
+              <div className="font-display font-bold text-[1.3rem] mb-2">
+                {c.title}
+              </div>
+              <div className="text-[0.9rem] text-text-dim">{c.body}</div>
             </div>
           ))}
         </div>
       </div>
     </section>
   );
-}
+};
+
+export default Highlights;

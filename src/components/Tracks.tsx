@@ -1,5 +1,4 @@
-import { useReveal } from "../hooks/useReveal";
-import "./Tracks.css";
+import { useReveal } from "@/hooks/useReveal";
 
 // Add more Tracks from Competitions Team
 const TRACKS = [
@@ -25,13 +24,13 @@ const TRACKS = [
   },
 ];
 
-export default function Tracks() {
+const Tracks = () => {
   const labelRef = useReveal();
   const titleRef = useReveal();
   const gridRef = useReveal();
 
   return (
-    <section id="tracks" className="tracks-section">
+    <section id="tracks" className="bg-bg relative z-10">
       <div className="section-inner">
         <div className="section-label reveal" ref={labelRef}>
           Competition Tracks
@@ -39,16 +38,28 @@ export default function Tracks() {
         <h2 className="section-title reveal" ref={titleRef}>
           CTF Challenge Categories
         </h2>
-        <div className="tracks-grid reveal" ref={gridRef}>
+        <div
+          className="reveal grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-6 mt-12"
+          ref={gridRef}
+        >
           {TRACKS.map((t) => (
-            <div className="track-card" key={t.num}>
-              <div className="track-num">{t.num} TRACK</div>
-              <div className="track-title">{t.title}</div>
-              <div className="track-desc">{t.desc}</div>
+            <div
+              className="border border-border p-8 bg-surface transition-colors duration-250 hover:border-orange"
+              key={t.num}
+            >
+              <div className="font-mono text-[0.65rem] text-orange tracking-[0.2em] mb-[0.8rem]">
+                {t.num} TRACK
+              </div>
+              <div className="font-display font-bold text-[1.4rem] mb-[0.6rem]">
+                {t.title}
+              </div>
+              <div className="text-[0.85rem] text-text-dim">{t.desc}</div>
             </div>
           ))}
         </div>
       </div>
     </section>
   );
-}
+};
+
+export default Tracks;
