@@ -1,13 +1,12 @@
 import { useReveal } from "@/hooks/useReveal";
 
 const STATS = [
-  { num: "250+", label: "Attendees", color: "" },
+  { num: "400+", label: "Attendees", color: "" },
   { num: "9", label: "Sponsors", color: "cyan" },
-  { num: "24", label: "Hour CTF Competition", color: "green" },
-  { num: "12", label: "Workshops", color: "" },
+  { num: "19", label: "Workshops", color: "" },
   { num: "15", label: "Organizers", color: "cyan" },
+  { num: "25", label: "Volunteers", color: "" },
   { num: "100%", label: "Free to Attend", color: "green" },
-  { num: "25", label: "Volunteers", color: "cyan" },
 ];
 
 const Stats = () => {

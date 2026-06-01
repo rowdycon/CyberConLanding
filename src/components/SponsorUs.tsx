@@ -27,7 +27,6 @@ const TIERS = [
     perks: [
       "Everything in Gateway",
       "Social Media Post",
-      "Ceremony Spotlight",
       "Named Prize Sponsorship",
     ],
     featured: true,
@@ -36,7 +35,12 @@ const TIERS = [
     badge: "platinum",
     label: "Cloud",
     price: "$3,000",
-    perks: ["Everything in Horizon", "Photo Book", "Named CTF Track"],
+    perks: [
+      "Everything in Horizon",
+      "Ceremony Spotlight",
+      "Photo Book",
+      "Named CTF Track",
+    ],
     featured: true,
   },
 ];

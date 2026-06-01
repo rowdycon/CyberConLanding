@@ -4,16 +4,16 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuItems = [
     {
+      name: "Stats",
+      url: "#stats",
+    },
+    {
       name: "About",
       url: "#about",
     },
     {
       name: "Highlights",
       url: "#highlights",
-    },
-    {
-      name: "Tracks",
-      url: "#tracks",
     },
     {
       name: "Sponsor Us",
